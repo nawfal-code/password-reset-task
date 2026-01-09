@@ -102,7 +102,7 @@ export const forgotPassword = async (req, res) => {
  
 // `Click the link to reset your password: ${resetLink}`
     return res.status(200).json({
-      message: resetLink
+      message: `this ${resetLink}`
     });
 
   } catch (error) {
@@ -139,6 +139,7 @@ export const resetPassword = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 
 
 
