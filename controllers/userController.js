@@ -92,13 +92,13 @@ export const forgotPassword = async (req, res) => {
       { expiresIn: "30m" }
     );
 
-    const resetLink = `http://localhost:5173/password-reset/${token}`;
+    // const resetLink = `http://localhost:5173/password-reset/${token}`;
 
-    await sendEmail(
-      normalizedEmail,
-      "Password Reset Link",
-      `Click the link to reset your password: ${resetLink}`
-    );
+    // await sendEmail(
+    //   normalizedEmail,
+    //   "Password Reset Link",
+    //   `Click the link to reset your password: ${resetLink}`
+    // );
 
     return res.status(200).json({
       message: "a reset link sent to email succesfully",
@@ -138,5 +138,6 @@ export const resetPassword = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 
 
