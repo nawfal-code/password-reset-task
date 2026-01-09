@@ -78,8 +78,8 @@ export const forgotPassword = async (req, res) => {
       return res.status(400).json({ message: "Email is required" });
     }
 
-    const normalizedEmail = email.trim().toLowerCase();
-    const user = await Users.findOne({ email: normalizedEmail });
+    // const normalizedEmail = email.trim().toLowerCase();
+    const user = await Users.findOne({ email: email });
 
      if(!user){
             return res.status(404).json({ message: "user not found , enter valid email" });
@@ -95,7 +95,7 @@ export const forgotPassword = async (req, res) => {
     // const resetLink = `http://localhost:5173/password-reset/${token}`;
 
     await sendEmail(
-      normalizedEmail,
+       email,
       "Password Reset Link",
      "check check"  
     );
@@ -138,6 +138,7 @@ export const resetPassword = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 
 
 
