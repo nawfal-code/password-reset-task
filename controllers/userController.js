@@ -86,15 +86,14 @@ export const forgotPassword = async (req, res) => {
      }
 
 
-    // const token = jwt.sign(
-    //   { _id: user._id },
-    //   process.env.SECRET_KEY,
-    //   { expiresIn: "1h" }
-    // );
+    const token = jwt.sign(
+      { _id: user._id },
+      process.env.SECRET_KEY,
+      { expiresIn: "1h" }
+    );
 
     // const resetLink = `http://localhost:5173/password-reset/${token}`;
-    console.log(email);
-   console.log(user);
+    
    //  await sendEmail(
    //     email,
    //    "Password Reset Link",
@@ -104,6 +103,7 @@ export const forgotPassword = async (req, res) => {
 // `Click the link to reset your password: ${resetLink}`
     return res.status(200).json({
       message: "a reset link sent to email succesfully",
+      token:token
     });
 
   } catch (error) {
@@ -140,6 +140,7 @@ export const resetPassword = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 
 
 
