@@ -97,10 +97,9 @@ export const forgotPassword = async (req, res) => {
     await sendEmail(
       normalizedEmail,
       "Password Reset Link",
-     "check check"
-      // `Click the link to reset your password: ${resetLink}`
+     "check check"  
     );
-
+// `Click the link to reset your password: ${resetLink}`
     return res.status(200).json({
       message: "a reset link sent to email succesfully",
     });
@@ -139,6 +138,7 @@ export const resetPassword = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 
 
 
