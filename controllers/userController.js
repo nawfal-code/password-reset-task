@@ -94,6 +94,7 @@ export const forgotPassword = async (req, res) => {
 
     // const resetLink = `http://localhost:5173/password-reset/${token}`;
     console.log(email);
+   console.log(user);
    //  await sendEmail(
    //     email,
    //    "Password Reset Link",
@@ -139,6 +140,7 @@ export const resetPassword = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 
 
 
