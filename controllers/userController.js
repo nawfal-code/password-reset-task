@@ -93,12 +93,13 @@ export const forgotPassword = async (req, res) => {
     // );
 
     // const resetLink = `http://localhost:5173/password-reset/${token}`;
-
+    console.log(email);
     await sendEmail(
        email,
       "Password Reset Link",
      "check check"  
     );
+   console.log("done);
 // `Click the link to reset your password: ${resetLink}`
     return res.status(200).json({
       message: "a reset link sent to email succesfully",
@@ -138,6 +139,7 @@ export const resetPassword = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 
 
 
