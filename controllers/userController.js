@@ -86,11 +86,11 @@ export const forgotPassword = async (req, res) => {
      }
 
 
-    const token = jwt.sign(
-      { _id: user._id },
-      process.env.SECRET_KEY,
-      { expiresIn: "30m" }
-    );
+    // const token = jwt.sign(
+    //   { _id: user._id },
+    //   process.env.SECRET_KEY,
+    //   { expiresIn: "30m" }
+    // );
 
     // const resetLink = `http://localhost:5173/password-reset/${token}`;
 
@@ -138,6 +138,7 @@ export const resetPassword = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 
 
 
