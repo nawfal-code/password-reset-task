@@ -97,7 +97,7 @@ export const forgotPassword = async (req, res) => {
     await sendEmail(
        email,
       "Password Reset Link",
-    `Click the link to reset your password: ${resetLink} 
+    `Click the link to reset your password: ${resetLink}`
     );
  
     return res.status(200).json({
@@ -138,6 +138,7 @@ export const resetPassword = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 
 
 
