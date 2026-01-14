@@ -3,6 +3,9 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+// send mail
+const sendEmail = async (to, subject, text) => {
+
 const transporter = nodemailer.createTransport({
   service:"gmail",
   auth: {
@@ -10,9 +13,7 @@ const transporter = nodemailer.createTransport({
     pass: process.env.PASS_KEY,
   },
 });
-
-// send mail
-const sendEmail = async (to, subject, text) => {
+ 
   try {
     const mailOptions = {
       from: process.env.PASS_MAIL,
@@ -30,6 +31,7 @@ const sendEmail = async (to, subject, text) => {
 };
 
 export default sendEmail;
+
 
 
 
