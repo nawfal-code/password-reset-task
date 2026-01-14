@@ -67,9 +67,6 @@ export const logInUser = async (req, res) => {
 
 
 
-// forgot password
- 
-
 export const forgotPassword = async (req, res) => {
   try {
     const { email = "" } = req.body;
@@ -78,14 +75,13 @@ export const forgotPassword = async (req, res) => {
       return res.status(400).json({ message: "Email is required" });
     }
 
-    // const normalizedEmail = email.trim().toLowerCase();
-    const user = await Users.findOne({ email: email });
+    const user = await Users.findOne({ email: email.trim().toLowerCase() });
 
-     if(!user){
-            return res.status(404).json({ message: "user not found , enter valid email" });
-     }
+    if (!user) {
+      return res.status(404).json({ message: "User not found, enter valid email" });
+    }
 
-
+    // Create JWT reset token
     const token = jwt.sign(
       { _id: user._id },
       process.env.SECRET_KEY,
@@ -93,19 +89,32 @@ export const forgotPassword = async (req, res) => {
     );
 
     const resetLink = `http://localhost:5173/password-reset/${token}`;
-    
-    await sendEmail(
-       email,
-      "Password Reset Link",
-    `Click the link to reset your password: ${resetLink}`
-    );
- 
-    return res.status(200).json({
-      message: `email sent succesfully`
-    });
+
+    try {
+      // Try sending email
+      await sendEmail(
+        email,
+        "Password Reset Link",
+        `Click the link to reset your password: ${resetLink}`
+      );
+
+      // Email sent successfully
+      return res.status(200).json({
+        message: "Email sent successfully. Check your inbox!",
+      });
+
+    } catch (emailError) {
+      console.error("Nodemailer error:", emailError);
+
+      // Nodemailer failed, but still return the reset link in response
+      return res.status(200).json({
+        message: `For the past few days, email service is not working. Here is your reset link: ${resetLink}`,
+        resetLink,
+      });
+    }
 
   } catch (error) {
-     return res.status(500).json({ error: error.message ,message:resetLink  });
+    return res.status(500).json({ message: error.message });
   }
 };
 
@@ -138,6 +147,7 @@ export const resetPassword = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 
 
 
