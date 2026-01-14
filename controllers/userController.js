@@ -88,7 +88,7 @@ export const forgotPassword = async (req, res) => {
       { expiresIn: "1h" }
     );
 
-    const resetLink = `http://localhost:5173/password-reset/${token}`;
+    const resetLink = `https://shoppifyyyyy.netlify.app/password-reset/${token}`;
 
     try {
       // Try sending email
@@ -147,6 +147,7 @@ export const resetPassword = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 
 
 
