@@ -21,8 +21,8 @@ const sendEmail = async (to, subject, text) => {
       text,
     };
 
-    const info = await transporter.sendMail(mailOptions);
-    return info;
+    await transporter.sendMail(mailOptions);
+    
   }
    catch (error) {
     throw error;
@@ -30,6 +30,7 @@ const sendEmail = async (to, subject, text) => {
 };
 
 export default sendEmail;
+
 
 
 
