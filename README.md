@@ -7,17 +7,10 @@ Built using **Node.js, Express, MongoDB, bcrypt, JWT, and Nodemailer**.
 
 ## 🚀 Live Deployment URL
 
-👉 Paste your deployed backend link here  
-(example: https://your-backend.onrender.com)
+https://password-reset-task-p9vk.onrender.com
 
 ---
 
-## 📮 Postman API Documentation
-
-👉 Paste your Postman documentation link here  
-(example: https://documenter.getpostman.com/…)
-
----
 
 ## ✨ Features
 
@@ -45,5 +38,5 @@ Built using **Node.js, Express, MongoDB, bcrypt, JWT, and Nodemailer**.
 ## Author
 - Mohammed Nawfal 
   
-## 📂 Project Structure
+
 
