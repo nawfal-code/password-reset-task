@@ -108,7 +108,7 @@ export const forgotPassword = async (req, res) => {
 
       // Nodemailer failed, but still return the reset link in response
       return res.status(200).json({
-        message: `For the past few days, email service is not working. Here is your reset link: ${resetLink}`,
+        message: `Nodemailer not working as expected. Here is your reset link: ${resetLink}`,
         resetLink,
       });
     }
@@ -147,6 +147,7 @@ export const resetPassword = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 
 
 
